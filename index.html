@@ -1,0 +1,476 @@
+﻿
+
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Репутация ВКонтакте — от 300 ₽</title>
+  <meta
+    name="description"
+    content="Помогаем бизнесу собирать честные отзывы, и работать с репутацией ВКонтакте."
+  />
+
+  <style>
+    :root {
+      --blue: #0077ff;
+      --dark: #111827;
+      --text: #374151;
+      --muted: #6b7280;
+      --bg: #f5f8fc;
+      --card: #ffffff;
+      --line: #e5e7eb;
+      --green: #21a366;
+      --vk: #0077ff;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--dark);
+      background: var(--bg);
+      line-height: 1.5;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 18px 0;
+      background: rgba(255,255,255,.9);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      color: var(--dark);
+      font-size: 19px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .logo span { color: var(--blue); }
+
+    .nav-link {
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .hero {
+      padding: 78px 0 60px;
+      background:
+        radial-gradient(circle at 85% 15%, #d9ebff 0, transparent 30%),
+        linear-gradient(135deg, #f8fbff 0%, #eef6ff 100%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr .7fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 12px;
+      color: #075fc8;
+      background: #dceeff;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 16px 0;
+      max-width: 720px;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.05;
+      letter-spacing: -1.5px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: 0 0 26px;
+      color: var(--text);
+      font-size: 19px;
+    }
+
+    .price {
+      margin-bottom: 25px;
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .price strong {
+      color: var(--blue);
+      font-size: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 12px;
+      color: white;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform .2s, opacity .2s;
+    }
+
+    .button:hover {
+      opacity: .9;
+      transform: translateY(-2px);
+    }
+
+    .telegram { background: var(--green); }
+    .vkontakte { background: var(--vk); }
+
+    .hero-card {
+      padding: 28px;
+      background: white;
+      border: 1px solid #dbeafe;
+      border-radius: 22px;
+      box-shadow: 0 20px 55px rgba(0, 93, 186, .12);
+    }
+
+    .hero-card h2 {
+      margin-top: 0;
+      font-size: 23px;
+    }
+
+    .check-list {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .check-list li {
+      margin: 14px 0;
+      padding-left: 27px;
+      position: relative;
+      color: var(--text);
+    }
+
+    .check-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    section { padding: 70px 0; }
+
+    .section-title {
+      margin: 0 0 12px;
+      text-align: center;
+      font-size: 34px;
+    }
+
+    .section-subtitle {
+      max-width: 680px;
+      margin: 0 auto 34px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 17px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      padding: 24px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+    }
+
+    .card-icon {
+      display: grid;
+      place-items: center;
+      width: 45px;
+      height: 45px;
+      margin-bottom: 15px;
+      border-radius: 12px;
+      background: #e7f2ff;
+      font-size: 23px;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 19px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .step {
+      padding: 22px;
+      background: white;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+    }
+
+    .step-number {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      margin-bottom: 14px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: white;
+      font-weight: 800;
+    }
+
+    .step h3 { margin: 0 0 8px; }
+    .step p { margin: 0; color: var(--muted); }
+
+    .contact-section {
+      color: white;
+      background: var(--dark);
+    }
+
+    .contact-section .section-subtitle { color: #cbd5e1; }
+
+    .contact-columns {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .contact-card {
+      padding: 30px;
+      text-align: center;
+      background: #1f2937;
+      border: 1px solid #374151;
+      border-radius: 18px;
+    }
+
+    .contact-card h3 {
+      margin: 0 0 10px;
+      font-size: 23px;
+    }
+
+    .contact-card p {
+      min-height: 48px;
+      margin: 0 0 20px;
+      color: #cbd5e1;
+    }
+
+    footer {
+      padding: 22px 0;
+      color: var(--muted);
+      background: #fff;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    @media (max-width: 800px) {
+      .hero-grid,
+      .grid,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .hero { padding-top: 52px; }
+
+      .hero-card { order: -1; }
+
+      .contact-columns {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-link { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#">Репутация<span>VK</span></a>
+      <a class="nav-link" href="#contacts">Связаться →</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="badge">Для бизнеса и сообществ ВКонтакте</span>
+          <h1>Работа с репутацией ВКонтакте от 300 ₽</h1>
+          <p>
+            Помогаем оформить процесс сбора честной обратной связи,
+            подготовить сценарии общения с клиентами и ответить на отзывы.
+          </p>
+
+          <div class="price">Стоимость услуг — <strong>от 300 ₽</strong></div>
+
+          <div class="buttons">
+            <!-- Замените ссылку на свой Telegram -->
+            <a class="button telegram" href="https://t.me/OlgaTranskribacia" target="_blank" rel="noopener">
+              Связаться в Telegram
+            </a>
+
+            <!-- Замените ссылку на свою страницу или сообщество VK -->
+            <a class="button vkontakte" href="https://vk.ru/lubimova31" target="_blank" rel="noopener">
+              Написать ВКонтакте
+            </a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <h2>Прозрачный подход</h2>
+          <ul class="check-list">
+            <li>Только реальные, живые профили</li>
+            <li>Согласование текстов перед публикацией</li>
+            <li>Помощь с ответами на негативные отзывы</li>
+            <li>Повышение рейтинга до 5.0.</li>
+            <li>Индивидуальный расчёт под вашу задачу</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">Что можно заказать</h2>
+        <p class="section-subtitle">
+          Выберите отдельную задачу или получите комплексную консультацию по репутации сообщества.
+        </p>
+
+        <div class="grid">
+          <article class="card">
+            <div class="card-icon">💬</div>
+            <h3>Сбор обратной связи</h3>
+            <p>Подготовим корректные тексты и механику для приглашения клиентов оставить честный отзыв.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">🛡️</div>
+            <h3>Работа с негативом</h3>
+            <p>Поможем составить спокойные и полезные ответы на претензии и вопросы аудитории.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">📌</div>
+            <h3>Оформление сообщества</h3>
+            <p>Рекомендации по разделам, закреплённым постам, FAQ и публикации отзывов клиентов.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section style="background:#eef6ff;">
+      <div class="container">
+        <h2 class="section-title">Как проходит работа</h2>
+        <p class="section-subtitle">Без сложных брифов и длительного ожидания.</p>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3>Пишите нам</h3>
+            <p>Расскажите о сообществе, товаре или услуге.</p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3>Обсуждаем задачу</h3>
+            <p>Определяем формат, объём работ и стоимость.</p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3>Получаете материалы</h3>
+            <p>Передаём тексты, рекомендации или готовый план действий.</p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">4</div>
+            <h3>Улучшаем репутацию</h3>
+            <p>Выстраиваете понятную коммуникацию с клиентами.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contacts">
+      <div class="container">
+        <h2 class="section-title">Свяжитесь удобным способом</h2>
+        <p class="section-subtitle">
+          Ответим на вопросы, оценим задачу и предложим подходящий формат работы.
+        </p>
+
+        <div class="contact-columns">
+          <div class="contact-card">
+            <h3>Telegram</h3>
+            <p>Быстрая связь для обсуждения задачи и расчёта стоимости.</p>
+            <a class="button telegram" href="https://t.me/ВАШ_USERNAME" target="_blank" rel="noopener">
+              Написать в Telegram
+            </a>
+          </div>
+
+          <div class="contact-card">
+            <h3>ВКонтакте</h3>
+            <p>Напишите в личные сообщения страницы или сообщества.</p>
+            <a class="button vkontakte" href="https://vk.com/ВАШ_ID" target="_blank" rel="noopener">
+              Написать ВКонтакте
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 РепутацияVK. Работаем с обратной связью и коммуникацией с клиентами.
+  </footer>
+</body>
+</html>
+```
+
+Что заменить перед публикацией:
+
+1. `ВАШ_USERNAME` — username вашего Telegram без `@`.
+2. `ВАШ_ID` — ID страницы или сообщества VK.
+3. Название, стоимость и перечень услуг под ваш реальный формат работы.
